@@ -164,6 +164,7 @@ public class SliderView extends FrameLayout
     private void initIndicator() {
         if (mPagerIndicator == null) {
             mPagerIndicator = new PageIndicatorView(getContext());
+            mPagerIndicator.setId(View.generateViewId());
             LayoutParams params = new LayoutParams(
                     LayoutParams.WRAP_CONTENT,
                     LayoutParams.WRAP_CONTENT
