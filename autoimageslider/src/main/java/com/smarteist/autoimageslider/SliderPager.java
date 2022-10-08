@@ -1456,25 +1456,21 @@ public class SliderPager extends ViewGroup {
 
     @Override
     public void onRestoreInstanceState(Parcelable state) {
-        try {
-            if (!(state instanceof SavedState)) {
-                super.onRestoreInstanceState(state);
-                return;
-            }
+        if (!(state instanceof SavedState)) {
+            super.onRestoreInstanceState(state);
+            return;
+        }
 
-            SavedState ss = (SavedState) state;
-            super.onRestoreInstanceState(ss.getSuperState());
+        SavedState ss = (SavedState) state;
+        super.onRestoreInstanceState(ss.getSuperState());
 
-            if (mAdapter != null) {
-                mAdapter.restoreState(ss.adapterState, ss.loader);
-                setCurrentItemInternal(ss.position, false, true);
-            } else {
-                mRestoredCurItem = ss.position;
-                mRestoredAdapterState = ss.adapterState;
-                mRestoredClassLoader = ss.loader;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (mAdapter != null) {
+            mAdapter.restoreState(ss.adapterState, ss.loader);
+            setCurrentItemInternal(ss.position, false, true);
+        } else {
+            mRestoredCurItem = ss.position;
+            mRestoredAdapterState = ss.adapterState;
+            mRestoredClassLoader = ss.loader;
         }
     }
 
