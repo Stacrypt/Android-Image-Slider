@@ -1456,7 +1456,7 @@ public class SliderPager extends ViewGroup {
 
     @Override
     public void onRestoreInstanceState(Parcelable state) {
-        if (!(state instanceof SavedState)) {
+        if (!(state instanceof AbsSavedState)) {
             super.onRestoreInstanceState(state);
             return;
         }
@@ -1487,6 +1487,7 @@ public class SliderPager extends ViewGroup {
                 throw new IllegalStateException("Cannot add pager decor view during layout");
             }
             lp.needsMeasure = true;
+            child.setId(View.generateViewId());
             addViewInLayout(child, index, params);
         } else {
             super.addView(child, index, params);
